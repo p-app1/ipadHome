@@ -54,6 +54,16 @@ body {
     background: #d13c6e;
 }
 
+/* Body: Wrapper for Time + Right Panel */
+.body {
+    grid-row: 1;
+    grid-column: 1 / 3;
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    max-height: 100%;
+}
+
 /* Left Panel: Time Display */
 .left-panel {
     display: flex;
@@ -63,8 +73,7 @@ body {
     border-radius: 16px;
     box-shadow: none;
     padding: 30px;
-    grid-row: 1;
-    grid-column: 1;
+    flex: 0 0 auto;
 }
 
 .time-display {
@@ -95,13 +104,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    grid-row: 1;
-    grid-column: 2;
     overflow: hidden;
     position: relative;
     max-width: 700px;
-    margin-left: auto;
-    margin-top: 50px;
+    flex: 1;
 }
 
 .resize-handle {

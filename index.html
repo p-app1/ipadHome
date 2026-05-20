@@ -8,49 +8,53 @@
 </head>
 <body>
     <div class="app-container">
+      
         <!-- Top Left: Buttons -->
         <div class="top-buttons">
             <button id="viewHistoryBtn" class="btn-header">📊 History</button>
             <button id="endWeekBtn" class="btn-header">End Week</button>
         </div>
 
-        <!-- Left Side: Time Display -->
-        <div class="left-panel">
-            <div class="time-display">
-                <div id="timeDisplay" class="time-text">00:00</div>
-                <div id="dateDisplay" class="date-text">Today</div>
-                <div id="lastUpdated" class="last-updated">Updated: Just now</div>
+        <!-- Body: Time + Right Panel Side-by-Side -->
+        <div class="body">
+            <!-- Left Side: Time Display -->
+            <div class="left-panel">
+                <div class="time-display">
+                    <div id="timeDisplay" class="time-text">00:00</div>
+                    <div id="dateDisplay" class="date-text">Today</div>
+                    <div id="lastUpdated" class="last-updated">Updated: Just now</div>
+                </div>
             </div>
-        </div>
-
-        <!-- Right Side: Budget & Todo -->
-        <div class="right-panel">
-            <!-- Budget Section -->
-            <section class="section budget-section">
-                <div class="budget-inputs">
-                    <input type="text" id="transactionLabel" placeholder="e.g., Food, Uber" class="transaction-label">
-                    <input type="number" id="transactionInput" placeholder="Amount" class="transaction-input">
-                    <button id="addTransactionBtn" class="btn-add">Add</button>
-                </div>
-                <div class="budget-available">
-                    <span>Money in</span>
-                    <div class="money-in-input">
-                        <span>+</span>
-                        <input type="number" id="budgetBalance" class="balance-input" value="0">
+           
+            <!-- Right Side: Budget & Todo -->
+            <div class="right-panel">
+                <!-- Budget Section -->
+                <section class="section budget-section">
+                    <div class="budget-inputs">
+                        <input type="text" id="transactionLabel" placeholder="e.g., Food, Uber" class="transaction-label">
+                        <input type="number" id="transactionInput" placeholder="Amount" class="transaction-input">
+                        <button id="addTransactionBtn" class="btn-add">Add</button>
                     </div>
-                </div>
-                <div class="transaction-list" id="transactionList"></div>
-                <div class="budget-net-fixed">
-                    Net: <span id="budgetNet" class="budget-value">0</span>
-                </div>
-            </section>
+                    <div class="budget-available">
+                        <span>Money in</span>
+                        <div class="money-in-input">
+                            <span>+</span>
+                            <input type="number" id="budgetBalance" class="balance-input" value="0">
+                        </div>
+                    </div>
+                    <div class="transaction-list" id="transactionList"></div>
+                    <div class="budget-net-fixed">
+                        Net: <span id="budgetNet" class="budget-value">0</span>
+                    </div>
+                </section>
 
-            <!-- Todo List Section -->
-            <section class="section todo-section">
-                <h2>Todo List</h2>
-                <div class="todo-list" id="todoList"></div>
-                <button id="addTodoBtn" class="btn-add-item">+ Add item</button>
-            </section>
+                <!-- Todo List Section -->
+                <section class="section todo-section">
+                    <h2>Todo List</h2>
+                    <div class="todo-list" id="todoList"></div>
+                    <button id="addTodoBtn" class="btn-add-item">+ Add item</button>
+                </section>
+            </div>
         </div>
 
         <!-- Bottom: Weekly Planner -->
