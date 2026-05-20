@@ -1,0 +1,245 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #fce4ec;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
+.history-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f44381;
+}
+
+.history-header h1 {
+    margin: 0;
+    color: #f44381;
+    font-size: 32px;
+}
+
+.btn-back {
+    padding: 10px 16px;
+    background: #f44381;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-back:hover {
+    background: #d13c6e;
+}
+
+.history-content {
+    min-height: 400px;
+}
+
+.no-weeks {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 16px;
+}
+
+.weeks-list {
+    display: grid;
+    gap: 15px;
+}
+
+.week-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(244, 67, 129, 0.1);
+}
+
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f5c2d7;
+}
+
+.week-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.week-dates {
+    font-size: 13px;
+    color: #666;
+}
+
+.week-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    padding: 10px;
+    background: #fff5f8;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #999;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #f44381;
+}
+
+.stat-value.positive {
+    color: #51cf66;
+}
+
+.stat-value.negative {
+    color: #ff6b9d;
+}
+
+.week-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-view, .btn-delete {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.btn-view {
+    background: #f44381;
+    color: white;
+}
+
+.btn-view:hover {
+    background: #d13c6e;
+}
+
+.btn-delete {
+    background: #ffcce5;
+    color: #d13c6e;
+}
+
+.btn-delete:hover {
+    background: #ff99c8;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #f44381;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+}
+
+.detail-section h3 {
+    margin: 15px 0 10px;
+    color: #f44381;
+    font-size: 14px;
+}
+
+.detail-section p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.detail-section ul {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+.detail-section li {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.planner-entry {
+    background: #fff5f8;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .week-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .week-actions {
+        flex-direction: column;
+    }
+}
