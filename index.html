@@ -8,6 +8,12 @@
 </head>
 <body>
     <div class="app-container">
+        <!-- Top Left: Buttons -->
+        <div class="top-buttons">
+            <button id="viewHistoryBtn" class="btn-header">📊 History</button>
+            <button id="endWeekBtn" class="btn-header">End Week</button>
+        </div>
+
         <!-- Left Side: Time Display -->
         <div class="left-panel">
             <div class="time-display">
@@ -19,11 +25,6 @@
 
         <!-- Right Side: Budget & Todo -->
         <div class="right-panel">
-            <div class="panel-header">
-                <button id="viewHistoryBtn" class="btn-header">📊 History</button>
-                <button id="endWeekBtn" class="btn-header">End Week</button>
-            </div>
-
             <!-- Budget Section -->
             <section class="section budget-section">
                 <div class="budget-inputs">
@@ -43,8 +44,6 @@
                     Net: <span id="budgetNet" class="budget-value">0</span>
                 </div>
             </section>
-
-            <div class="resize-handle"></div>
 
             <!-- Todo List Section -->
             <section class="section todo-section">
