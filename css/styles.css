@@ -7,162 +7,167 @@
 html, body {
     width: 100%;
     height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
     overflow: hidden;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #fce4ec;
-    color: #333;
-    display: flex;
-}
-
+/* Main App Container - Grid Layout */
 .app-container {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    grid-template-rows: 1fr auto;
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr auto;
-    gap: 20px;
-    padding: 20px;
+    gap: 0;
+    background: #f8f0f0;
 }
 
-/* Left Panel: Time Display */
-.left-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border-radius: 16px;
-    box-shadow: none;
-    padding: 30px;
-    grid-row: 1;
-    grid-column: 1;
-}
-
-.time-display {
-    text-align: center;
-}
-
-.time-text {
-    font-size: 72px;
-    font-weight: 700;
-    color: #f44381;
-    line-height: 1;
-    margin-bottom: 10px;
-}
-
-.date-text {
-    font-size: 24px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.last-updated {
-    font-size: 12px;
-    color: #999;
-}
-
-/* Right Panel: Budget & Todo */
-.right-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    grid-row: 1;
-    grid-column: 2;
-    overflow: hidden;
-    position: relative;
-    max-width: 700px;
-    margin-left: auto;
-}
-
-.panel-header {
+/* Top Buttons - Fixed in top-left corner */
+.top-buttons {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
     display: flex;
     gap: 8px;
-    flex: 0 0 auto;
 }
 
 .btn-header {
-    flex: 1;
     padding: 8px 12px;
-    background: #f44381;
+    background: #d8597f;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 12px;
     font-weight: 500;
-    font-size: 13px;
     transition: background 0.2s;
 }
 
 .btn-header:hover {
-    background: #d13c6e;
+    background: #c74369;
 }
 
-.resize-handle {
-    height: 4px;
-    background: #f5c2d7;
-    cursor: row-resize;
-    border-radius: 2px;
-    margin: 0 -16px;
-    flex: 0 0 auto;
+/* Left Panel: Time Display */
+.left-panel {
+    grid-column: 1;
+    grid-row: 1 / 2;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: #f8f0f0;
+    border-right: 2px solid #ff9ec6;
+    overflow: hidden;
 }
 
-.resize-handle:hover {
-    background: #f44381;
+.time-display {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Bottom Panel: Planner */
-.bottom-panel {
-    grid-row: 2;
-    grid-column: 1 / -1;
+.time-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d8597f;
+}
+
+.date-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.last-updated {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* Right Panel: Budget & Todo - 2 columns, stacked top row */
+.right-panel {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+    background: #f8f0f0;
+    overflow: hidden;
+}
+
+.section {
+    background: #fce4ec;
+    border-radius: 12px;
+    padding: 15px;
+    border: 2px solid #ff9ec6;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Budget Section */
+.budget-section {
+    flex: 1;
     overflow-y: auto;
 }
 
-/* Sections */
-.section {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 2px 8px rgba(244, 67, 129, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.section h2 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: #333;
-    border-bottom: 2px solid #f44381;
-    padding-bottom: 8px;
-}
-
-.budget-section {
-    flex: 0 0 auto;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-}
-
 .budget-inputs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 8px;
-    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.transaction-label {
+    padding: 8px 10px;
+    border: 1px solid #ff9ec6;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+}
+
+.transaction-input {
+    padding: 8px 10px;
+    border: 1px solid #ff9ec6;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+}
+
+.transaction-input:focus,
+.transaction-label:focus {
+    outline: none;
+    border-color: #d8597f;
+    background: white;
+}
+
+.btn-add {
+    padding: 8px 12px;
+    background: #d8597f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background: #c74369;
 }
 
 .budget-available {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    padding: 8px;
+    margin-bottom: 12px;
+    padding: 8px 10px;
     background: #fff5f8;
     border-radius: 6px;
-    margin-bottom: 8px;
     font-size: 12px;
-    font-weight: 600;
-    flex: 0 0 auto;
 }
 
 .money-in-input {
@@ -172,67 +177,27 @@ body {
 }
 
 .balance-input {
-    width: 80px;
+    width: 70px;
     padding: 4px 6px;
-    border: 2px solid #f5c2d7;
+    border: 1px solid #ff9ec6;
     border-radius: 4px;
     font-size: 12px;
-    font-weight: 600;
-    color: #f44381;
+    font-family: inherit;
 }
 
 .balance-input:focus {
     outline: none;
-    border-color: #f44381;
+    border-color: #d8597f;
+    background: white;
 }
 
 .transaction-list {
-    flex: 1;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    font-size: 13px;
-    margin-bottom: 8px;
-}
-
-.budget-net-fixed {
-    flex: 0 0 auto;
-    padding: 6px 8px;
-    background: #fff5f8;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #333;
-    border-top: 2px solid #f5c2d7;
-}
-
-.transaction-input {
-    width: 80px;
-    padding: 6px 8px;
-    border: 2px solid #f5c2d7;
-    border-radius: 4px;
-    font-size: 12px;
-    transition: border-color 0.2s;
-}
-
-.transaction-input:focus {
-    outline: none;
-    border-color: #f44381;
-}
-
-.transaction-label {
+    margin-bottom: 12px;
     flex: 1;
-    padding: 6px 8px;
-    border: 2px solid #f5c2d7;
-    border-radius: 4px;
-    font-size: 12px;
-    transition: border-color 0.2s;
-}
-
-.transaction-label:focus {
-    outline: none;
-    border-color: #f44381;
+    overflow-y: auto;
 }
 
 .transaction-item {
@@ -274,22 +239,38 @@ body {
     background: #ff5287;
 }
 
+.budget-net-fixed {
+    padding: 10px;
+    background: #d8597f;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+}
+
+.budget-value {
+    margin-left: 4px;
+}
+
+/* Todo Section */
 .todo-section {
     flex: 1;
     overflow-y: auto;
-    min-height: 200px;
 }
 
-.planner-section {
-    width: 100%;
+.todo-section h2 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-/* Todo List Section */
 .todo-list {
     display: flex;
     flex-direction: column;
     gap: 6px;
     margin-bottom: 8px;
+    flex: 1;
 }
 
 .todo-item {
@@ -332,45 +313,37 @@ body {
 
 .btn-add-item {
     width: 100%;
-    padding: 8px;
-    background: #f44381;
+    padding: 10px;
+    background: #d8597f;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 12px;
     font-weight: 500;
-    font-size: 13px;
     transition: background 0.2s;
+    margin-top: auto;
 }
 
 .btn-add-item:hover {
-    background: #d13c6e;
+    background: #c74369;
 }
 
-.btn-add {
-    padding: 8px 12px;
-    background: #f44381;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 13px;
-    transition: background 0.2s;
+/* Bottom Panel: Planner - Full Width */
+.bottom-panel {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    padding: 15px;
+    background: #fce4ec;
+    border-top: 2px solid #ff9ec6;
+    overflow: hidden;
 }
 
-.btn-add:hover {
-    background: #d13c6e;
-}
-
-/* Weekly Planner */
 .planner-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     height: 100%;
-    padding: 20px;
-    background: #fce4ec;
 }
 
 .planner-day {
@@ -379,11 +352,12 @@ body {
     padding: 10px;
     display: flex;
     flex-direction: column;
+    border: 2px solid #b8405d;
 }
 
 .planner-day-name {
     font-weight: 600;
-    color: #000;
+    color: white;
     margin-bottom: 8px;
     font-size: 12px;
 }
@@ -393,11 +367,12 @@ body {
     padding: 6px 8px;
     border: 1px solid #b8405d;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     color: #000;
     font-family: inherit;
     resize: none;
     background: #e8677a;
+    min-height: 0;
 }
 
 .planner-day textarea::placeholder {
@@ -407,10 +382,30 @@ body {
 
 .planner-day textarea:focus {
     outline: none;
-    border-color: #b8405d;
-    background: #e8677a;
+    border-color: #fff;
+    background: #eec0ca;
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff9ec6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d8597f;
+}
+
+/* Responsive for smaller screens */
 @media (max-width: 1024px) {
     .app-container {
         grid-template-columns: 1fr;
@@ -418,17 +413,26 @@ body {
     }
 
     .left-panel {
-        grid-row: 1;
         grid-column: 1;
+        grid-row: 1;
+        border-right: none;
+        border-bottom: 2px solid #ff9ec6;
+        padding: 15px;
+    }
+
+    .time-text {
+        font-size: 24px;
     }
 
     .right-panel {
-        grid-row: 2;
         grid-column: 1;
+        grid-row: 2;
+        grid-template-columns: 1fr;
+        padding: 15px;
     }
 
     .bottom-panel {
-        grid-row: 3;
         grid-column: 1;
+        grid-row: 3;
     }
 }
