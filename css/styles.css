@@ -54,6 +54,7 @@ html, body {
     gap: 20px;
     padding: 20px;
     overflow: hidden;
+    min-height: 0;
 }
 
 /* Left Panel: Time Display with blank space */
@@ -100,6 +101,7 @@ html, body {
     margin-left: auto;
     margin-right: 20px;
     overflow: hidden;
+    min-height: 0;
 }
 
 /* Section Styling */
@@ -337,12 +339,12 @@ html, body {
 
 /* Bottom Panel: Planner - Full Width */
 .bottom-panel {
-    flex: 0 0 auto;
+    flex: 0 0 200px;
     padding: 15px 20px;
     background: #fce4ec;
     border-top: 2px solid #ff9ec6;
-    overflow: hidden;
-    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .planner-grid {
@@ -350,6 +352,7 @@ html, body {
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     height: 100%;
+    min-height: 150px;
 }
 
 .planner-day {
@@ -411,21 +414,15 @@ html, body {
     background: #d8597f;
 }
 
-/* Responsive for mobile/vertical */
+/* Responsive for mobile/vertical - keep horizontal but smaller */
 @media (max-width: 1024px) {
-    .app-container {
-        flex-direction: column;
-    }
-
     .main-content {
-        flex-direction: column;
-        gap: 15px;
-        flex: 1;
+        gap: 10px;
+        padding: 15px;
     }
 
     .left-panel {
-        justify-content: flex-start;
-        padding-top: 50px;
+        min-width: 100px;
     }
 
     .time-text {
@@ -434,17 +431,19 @@ html, body {
 
     .right-side-container {
         max-width: none;
-        margin-left: 0;
         margin-right: 0;
-        flex: 1;
         gap: 10px;
     }
 
     .budget-section {
-        flex: 0 1 40%;
+        flex: 0 1 35%;
     }
 
     .bottom-panel {
-        height: 150px;
+        flex: 0 0 150px;
+    }
+
+    .planner-grid {
+        min-height: 120px;
     }
 }
