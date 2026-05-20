@@ -12,23 +12,21 @@ html, body {
     overflow: hidden;
 }
 
-/* Main App Container - Grid Layout */
+/* Main App Container - Flex layout */
 .app-container {
-    display: grid;
-    grid-template-columns: 140px 1fr 1fr;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    gap: 0;
     background: #f8f0f0;
 }
 
-/* Top Buttons - Fixed in top-left corner */
+/* Top Buttons Container */
 .top-buttons {
-    position: fixed;
+    position: absolute;
     top: 10px;
     left: 10px;
-    z-index: 100;
+    z-index: 50;
     display: flex;
     gap: 8px;
 }
@@ -49,17 +47,23 @@ html, body {
     background: #c74369;
 }
 
-/* Left Panel: Time Display */
+/* Main Content Container - Time + Right Panels */
+.main-content {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Left Panel: Time Display with blank space */
 .left-panel {
-    grid-column: 1;
-    grid-row: 1 / 2;
-    padding: 20px 15px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    background: #f8f0f0;
-    border-right: 2px solid #ff9ec6;
-    overflow: hidden;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 140px;
+    flex-shrink: 0;
 }
 
 .time-display {
@@ -69,9 +73,10 @@ html, body {
 }
 
 .time-text {
-    font-size: 32px;
+    font-size: 48px;
     font-weight: bold;
     color: #d8597f;
+    line-height: 1;
 }
 
 .date-text {
@@ -85,18 +90,19 @@ html, body {
     margin-top: 8px;
 }
 
-/* Right Panel: Budget & Todo - 2 columns, stacked top row */
-.right-panel {
-    grid-column: 2 / 4;
-    grid-row: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+/* Right Side Container - Budget & Todo with max-width */
+.right-side-container {
+    display: flex;
+    flex-direction: column;
     gap: 15px;
-    padding: 20px;
-    background: #f8f0f0;
+    flex: 1;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: 20px;
     overflow: hidden;
 }
 
+/* Section Styling */
 .section {
     background: #fce4ec;
     border-radius: 12px;
@@ -109,7 +115,7 @@ html, body {
 
 /* Budget Section */
 .budget-section {
-    flex: 1;
+    flex: 0 1 45%;
     overflow-y: auto;
 }
 
@@ -331,12 +337,12 @@ html, body {
 
 /* Bottom Panel: Planner - Full Width */
 .bottom-panel {
-    grid-column: 1 / 4;
-    grid-row: 2;
-    padding: 15px;
+    flex: 0 0 auto;
+    padding: 15px 20px;
     background: #fce4ec;
     border-top: 2px solid #ff9ec6;
     overflow: hidden;
+    height: 200px;
 }
 
 .planner-grid {
@@ -405,34 +411,40 @@ html, body {
     background: #d8597f;
 }
 
-/* Responsive for smaller screens */
+/* Responsive for mobile/vertical */
 @media (max-width: 1024px) {
     .app-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr auto;
+        flex-direction: column;
+    }
+
+    .main-content {
+        flex-direction: column;
+        gap: 15px;
+        flex: 1;
     }
 
     .left-panel {
-        grid-column: 1;
-        grid-row: 1;
-        border-right: none;
-        border-bottom: 2px solid #ff9ec6;
-        padding: 15px;
+        justify-content: flex-start;
+        padding-top: 50px;
     }
 
     .time-text {
-        font-size: 24px;
+        font-size: 32px;
     }
 
-    .right-panel {
-        grid-column: 1;
-        grid-row: 2;
-        grid-template-columns: 1fr;
-        padding: 15px;
+    .right-side-container {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        flex: 1;
+        gap: 10px;
+    }
+
+    .budget-section {
+        flex: 0 1 40%;
     }
 
     .bottom-panel {
-        grid-column: 1;
-        grid-row: 3;
+        height: 150px;
     }
 }
